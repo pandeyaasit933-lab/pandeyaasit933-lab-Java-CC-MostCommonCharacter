@@ -1,4 +1,5 @@
 
+
 public class MostCommonCharacter {
     /**
      * Find the most common character in str.
