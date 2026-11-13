@@ -8,6 +8,27 @@ public class MostCommonCharacter {
      * @return the most common character within str.
      */
     public char recurringChar(String str) {
-        return ' ';
+        if (str == null || str.isEmpty()) {
+            return ' '; // Return a default value for null or empty strings
+        }
+
+        // Step 1: Count frequencies of each character
+        HashMap<Character, Integer> charCountMap = new HashMap<>();
+        for (char c : str.toCharArray()) {
+            charCountMap.put(c, charCountMap.getOrDefault(c, 0) + 1);
+        }
+
+        // Step 2: Find the character with the maximum frequency
+        char mostCommon = str.charAt(0);
+        int maxCount = 0;
+
+        for (Map.Entry<Character, Integer> entry : charCountMap.entrySet()) {
+            if (entry.getValue() > maxCount) {
+                maxCount = entry.getValue();
+                mostCommon = entry.getKey();
+            }
+        }
+
+        return mostCommon;
     }
 }
